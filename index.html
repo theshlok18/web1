@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Finora — Personal Finance Management</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/landing.css" />
+  <link rel="stylesheet" href="css/mobile.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-icon"><i class="fas fa-chart-line"></i></div>
+        <span>Finora</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#security">Security</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <i class="fas fa-moon" id="themeIcon"></i>
+        </button>
+        <a href="login.html" class="btn-outline">Login</a>
+        <a href="register.html" class="btn-primary">Get Started</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+      <div class="particles" id="particles"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-badge"><i class="fas fa-star"></i> #1 Personal Finance Platform</div>
+        <h1 class="hero-title">Take Control of Your <span class="gradient-text">Financial Future</span></h1>
+        <p class="hero-subtitle">Track your money, manage expenses, plan budgets, and build lasting wealth with one intelligent financial dashboard.</p>
+        <div class="hero-buttons">
+          <a href="register.html" class="btn-primary btn-lg"><i class="fas fa-rocket"></i> Get Started Free</a>
+          <a href="dashboard.html" class="btn-outline btn-lg"><i class="fas fa-eye"></i> Explore Dashboard</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number" data-target="50000">0</span><span>+</span>
+            <span class="stat-label">Income Records</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number" data-target="120000">0</span><span>+</span>
+            <span class="stat-label">Expenses Tracked</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number" data-target="8500">0</span><span>+</span>
+            <span class="stat-label">Goals Completed</span>
+          </div>
+        </div>
+        <p class="stats-note">* Sample figures for demonstration purposes only</p>
+      </div>
+      <div class="hero-visual">
+        <div class="phone-mockup">
+          <div class="phone-frame">
+            <div class="phone-screen">
+              <div class="phone-dashboard">
+                <div class="phone-header">
+                  <span>Dashboard</span>
+                  <i class="fas fa-bell"></i>
+                </div>
+                <div class="phone-balance">₹2,45,800</div>
+                <div class="phone-label">Total Balance</div>
+                <div class="phone-cards-row">
+                  <div class="phone-mini-card income">
+                    <i class="fas fa-arrow-up"></i>
+                    <span>₹85,000</span>
+                    <small>Income</small>
+                  </div>
+                  <div class="phone-mini-card expense">
+                    <i class="fas fa-arrow-down"></i>
+                    <span>₹42,000</span>
+                    <small>Expense</small>
+                  </div>
+                </div>
+                <div class="phone-chart-bar">
+                  <div class="bar-item"><div class="bar" style="height:60%"></div><span>Jan</span></div>
+                  <div class="bar-item"><div class="bar" style="height:80%"></div><span>Feb</span></div>
+                  <div class="bar-item"><div class="bar active" style="height:100%"></div><span>Mar</span></div>
+                  <div class="bar-item"><div class="bar" style="height:70%"></div><span>Apr</span></div>
+                  <div class="bar-item"><div class="bar" style="height:90%"></div><span>May</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="floating-coin coin-1"><i class="fas fa-coins"></i></div>
+        <div class="floating-coin coin-2"><i class="fas fa-dollar-sign"></i></div>
+        <div class="floating-coin coin-3"><i class="fas fa-piggy-bank"></i></div>
+        <div class="floating-card card-float-1">
+          <i class="fas fa-chart-line" style="color:#10b981"></i>
+          <div><strong>+18.5%</strong><br><small>Portfolio Growth</small></div>
+        </div>
+        <div class="floating-card card-float-2">
+          <i class="fas fa-bullseye" style="color:#f59e0b"></i>
+          <div><strong>Goal Met!</strong><br><small>Emergency Fund</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Features</div>
+        <h2>Everything You Need to <span class="gradient-text">Master Your Money</span></h2>
+        <p>A complete suite of financial tools designed for modern life</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card" data-href="dashboard.html">
+          <div class="feature-icon" style="background:linear-gradient(135deg,#10b981,#059669)"><i class="fas fa-wallet"></i></div>
+          <h3>Income Tracking</h3>
+          <p>Log every income source — salary, freelance, business, and more. Know exactly how much you earn.</p>
+          <a href="dashboard.html" class="feature-link">Explore <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="feature-card" data-href="dashboard.html">
+          <div class="feature-icon" style="background:linear-gradient(135deg,#ef4444,#dc2626)"><i class="fas fa-receipt"></i></div>
+          <h3>Expense Tracking</h3>
+          <p>Categorize and monitor every rupee spent. Visual breakdowns that reveal spending patterns.</p>
+          <a href="dashboard.html" class="feature-link">Explore <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="feature-card" data-href="dashboard.html">
+          <div class="feature-icon" style="background:linear-gradient(135deg,#3b82f6,#2563eb)"><i class="fas fa-sliders-h"></i></div>
+          <h3>Budget Planning</h3>
+          <p>Set monthly and category budgets. Get alerts before you overspend and stay on track.</p>
+          <a href="dashboard.html" class="feature-link">Explore <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="feature-card" data-href="dashboard.html">
+          <div class="feature-icon" style="background:linear-gradient(135deg,#f59e0b,#d97706)"><i class="fas fa-piggy-bank"></i></div>
+          <h3>Savings Goals</h3>
+          <p>Set targets for your dreams — car, house, vacation. Watch your progress with beautiful rings.</p>
+          <a href="dashboard.html" class="feature-link">Explore <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="feature-card" data-href="dashboard.html">
+          <div class="feature-icon" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed)"><i class="fas fa-chart-pie"></i></div>
+          <h3>Investment Tracking</h3>
+          <p>Monitor stocks, mutual funds, FDs, and gold. Track your portfolio's performance over time.</p>
+          <a href="dashboard.html" class="feature-link">Explore <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="feature-card" data-href="dashboard.html">
+          <div class="feature-icon" style="background:linear-gradient(135deg,#06b6d4,#0891b2)"><i class="fas fa-chart-bar"></i></div>
+          <h3>Financial Analytics</h3>
+          <p>Rich interactive charts showing income vs expense trends, cash flow, and category analysis.</p>
+          <a href="dashboard.html" class="feature-link">Explore <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="feature-card" data-href="dashboard.html">
+          <div class="feature-icon" style="background:linear-gradient(135deg,#ec4899,#db2777)"><i class="fas fa-bell"></i></div>
+          <h3>Bill Reminders</h3>
+          <p>Never miss a payment. Set reminders for bills, subscriptions, and recurring expenses.</p>
+          <a href="dashboard.html" class="feature-link">Explore <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="feature-card" data-href="dashboard.html">
+          <div class="feature-icon" style="background:linear-gradient(135deg,#14b8a6,#0d9488)"><i class="fas fa-file-invoice"></i></div>
+          <h3>Financial Reports</h3>
+          <p>Generate detailed reports and export to CSV. Get a complete picture of your financial health.</p>
+          <a href="dashboard.html" class="feature-link">Explore <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Process</div>
+        <h2>How <span class="gradient-text">Finora Works</span></h2>
+        <p>Six simple steps to complete financial mastery</p>
+      </div>
+      <div class="steps-container">
+        <div class="step-item">
+          <div class="step-number">01</div>
+          <div class="step-icon"><i class="fas fa-plus-circle"></i></div>
+          <h3>Add Income</h3>
+          <p>Log your salary, freelance earnings, and all income sources</p>
+        </div>
+        <div class="step-arrow"><i class="fas fa-chevron-right"></i></div>
+        <div class="step-item">
+          <div class="step-number">02</div>
+          <div class="step-icon"><i class="fas fa-receipt"></i></div>
+          <h3>Track Expenses</h3>
+          <p>Record every purchase and categorize your spending habits</p>
+        </div>
+        <div class="step-arrow"><i class="fas fa-chevron-right"></i></div>
+        <div class="step-item">
+          <div class="step-number">03</div>
+          <div class="step-icon"><i class="fas fa-sliders-h"></i></div>
+          <h3>Create Budget</h3>
+          <p>Set monthly limits and get alerts when nearing thresholds</p>
+        </div>
+        <div class="step-arrow"><i class="fas fa-chevron-right"></i></div>
+        <div class="step-item">
+          <div class="step-number">04</div>
+          <div class="step-icon"><i class="fas fa-piggy-bank"></i></div>
+          <h3>Save Money</h3>
+          <p>Create savings goals and contribute regularly to achieve them</p>
+        </div>
+        <div class="step-arrow"><i class="fas fa-chevron-right"></i></div>
+        <div class="step-item">
+          <div class="step-number">05</div>
+          <div class="step-icon"><i class="fas fa-chart-line"></i></div>
+          <h3>Analyze Reports</h3>
+          <p>View interactive charts and understand your financial patterns</p>
+        </div>
+        <div class="step-arrow"><i class="fas fa-chevron-right"></i></div>
+        <div class="step-item">
+          <div class="step-number">06</div>
+          <div class="step-icon"><i class="fas fa-trophy"></i></div>
+          <h3>Achieve Goals</h3>
+          <p>Reach financial freedom with data-driven decisions</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECURITY -->
+  <section class="security-section" id="security">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Security</div>
+        <h2>Your Data is <span class="gradient-text">Safe With Us</span></h2>
+        <p>Enterprise-grade security for your personal finances</p>
+      </div>
+      <div class="security-grid">
+        <div class="security-card">
+          <i class="fas fa-lock"></i>
+          <h3>Password Hashing</h3>
+          <p>Passwords are never stored in plain text — always hashed with bcrypt</p>
+        </div>
+        <div class="security-card">
+          <i class="fas fa-shield-alt"></i>
+          <h3>JWT Authentication</h3>
+          <p>Secure token-based authentication with expiry and refresh mechanisms</p>
+        </div>
+        <div class="security-card">
+          <i class="fas fa-user-lock"></i>
+          <h3>Data Isolation</h3>
+          <p>Your financial data is completely isolated — no other user can access it</p>
+        </div>
+        <div class="security-card">
+          <i class="fas fa-database"></i>
+          <h3>SQL Injection Protection</h3>
+          <p>Parameterized queries prevent all forms of SQL injection attacks</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-text">
+          <div class="section-badge">About Finora</div>
+          <h2>Built for <span class="gradient-text">Real Financial Growth</span></h2>
+          <p>Finora is a personal finance management platform designed to give you complete visibility and control over your money. Whether you're tracking daily expenses or planning long-term investments, Finora brings everything into one clean, intelligent dashboard.</p>
+          <p>Our mission is to make financial literacy accessible — giving every individual the tools previously reserved for financial advisors.</p>
+          <a href="register.html" class="btn-primary"><i class="fas fa-arrow-right"></i> Start for Free</a>
+        </div>
+        <div class="about-cards">
+          <div class="about-card">
+            <i class="fas fa-code" style="color:#10b981"></i>
+            <h4>Open & Transparent</h4>
+            <p>No hidden fees, no dark patterns</p>
+          </div>
+          <div class="about-card">
+            <i class="fas fa-mobile-alt" style="color:#3b82f6"></i>
+            <h4>Mobile First</h4>
+            <p>Works perfectly on any device</p>
+          </div>
+          <div class="about-card">
+            <i class="fas fa-bolt" style="color:#f59e0b"></i>
+            <h4>Real-time Updates</h4>
+            <p>Instant calculations and insights</p>
+          </div>
+          <div class="about-card">
+            <i class="fas fa-heart" style="color:#ef4444"></i>
+            <h4>User Focused</h4>
+            <p>Designed with simplicity at heart</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-card">
+        <div class="cta-orb cta-orb-1"></div>
+        <div class="cta-orb cta-orb-2"></div>
+        <div class="cta-content">
+          <h2>Your Financial Freedom <span class="gradient-text">Starts Today</span></h2>
+          <p>Join thousands of users already managing their finances smarter with Finora</p>
+          <a href="register.html" class="btn-primary btn-lg"><i class="fas fa-rocket"></i> Create Your Free Account</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">Contact</div>
+        <h2>Get In <span class="gradient-text">Touch</span></h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <div><strong>Email</strong><p>support@finora.app</p></div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <div><strong>Phone</strong><p>+91 98765 43210</p></div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div><strong>Location</strong><p>Mumbai, Maharashtra, India</p></div>
+          </div>
+        </div>
+        <form class="contact-form" id="contactForm">
+          <div class="form-row">
+            <input type="text" placeholder="Your Name" class="form-input" required />
+            <input type="email" placeholder="Your Email" class="form-input" required />
+          </div>
+          <input type="text" placeholder="Subject" class="form-input" required />
+          <textarea placeholder="Your Message" class="form-input" rows="4" required></textarea>
+          <button type="submit" class="btn-primary">Send Message <i class="fas fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-logo">
+            <div class="logo-icon"><i class="fas fa-chart-line"></i></div>
+            <span>Finora</span>
+          </div>
+          <p>Your intelligent personal finance companion. Track, plan, and grow your wealth with confidence.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="dashboard.html">Income</a></li>
+            <li><a href="dashboard.html">Expenses</a></li>
+            <li><a href="dashboard.html">Budgets</a></li>
+            <li><a href="dashboard.html">Analytics</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Documentation</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Cookie Policy</a></li>
+            <li><a href="#">Security</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Finora. All rights reserved. | Built with <i class="fas fa-heart" style="color:#ef4444"></i> for financial freedom</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/theme.js"></script>
+  <script src="js/landing.js"></script>
+</body>
+</html>

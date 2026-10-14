@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Profile — Finora</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/auth.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/mobile.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    body { background: var(--bg-primary); }
+    .profile-page { min-height: 100vh; padding: 2rem 1.5rem; }
+    .profile-topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: 800px; margin: 0 auto 2rem;
+    }
+    .profile-topbar a { color: var(--text-secondary); display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; }
+    .profile-topbar a:hover { color: var(--accent-green); }
+    .profile-container { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem; }
+    .profile-header-card {
+      background: var(--glass-bg); backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border); border-radius: 20px;
+      padding: 2rem; display: flex; align-items: center; gap: 1.5rem;
+      position: relative; overflow: hidden;
+    }
+    .profile-header-card::before {
+      content: ''; position: absolute; top: -40px; right: -40px;
+      width: 180px; height: 180px;
+      background: radial-gradient(circle, rgba(16,185,129,0.12), transparent);
+      border-radius: 50%;
+    }
+    .profile-avatar-large {
+      width: 80px; height: 80px;
+      background: linear-gradient(135deg, #10b981, #06b6d4);
+      border-radius: 20px; display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem; font-weight: 800; color: #fff; flex-shrink: 0;
+    }
+    .profile-header-info h2 { font-size: 1.4rem; margin-bottom: 0.25rem; }
+    .profile-header-info p { color: var(--text-secondary); font-size: 0.88rem; }
+    .profile-meta { display: flex; gap: 1rem; margin-top: 0.75rem; flex-wrap: wrap; }
+    .profile-meta span {
+      display: flex; align-items: center; gap: 0.4rem;
+      font-size: 0.78rem; color: var(--text-muted);
+      background: rgba(255,255,255,0.05); border: 1px solid var(--border-color);
+      padding: 0.25rem 0.75rem; border-radius: 100px;
+    }
+    .profile-meta span i { color: var(--accent-green); }
+    .profile-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; }
+    .profile-stat {
+      background: var(--glass-bg); border: 1px solid var(--glass-border);
+      border-radius: 14px; padding: 1.25rem; backdrop-filter: blur(20px); text-align: center;
+    }
+    .profile-stat .val { font-size: 1.4rem; font-weight: 800; color: var(--accent-green); }
+    .profile-stat .lbl { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.3rem; }
+    .profile-section-card {
+      background: var(--glass-bg); border: 1px solid var(--glass-border);
+      border-radius: 20px; padding: 2rem; backdrop-filter: blur(20px);
+    }
+    .profile-section-card h3 { font-size: 1rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.6rem; }
+    .profile-section-card h3 i { color: var(--accent-green); }
+    .form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 600px) {
+      .form-grid-2 { grid-template-columns: 1fr; }
+      .profile-header-card { flex-direction: column; text-align: center; }
+      .profile-meta { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="profile-page">
+    <div class="profile-topbar">
+      <a href="dashboard.html"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+      <button class="theme-toggle" id="themeToggle" style="background:var(--glass-bg);border:1px solid var(--glass-border);color:var(--text-secondary);width:38px;height:38px;border-radius:10px;cursor:pointer;font-size:0.9rem;display:flex;align-items:center;justify-content:center;">
+        <i class="fas fa-moon" id="themeIcon"></i>
+      </button>
+    </div>
+
+    <div class="profile-container">
+      <!-- Header -->
+      <div class="profile-header-card">
+        <div class="profile-avatar-large" id="profileAvatarLarge">DU</div>
+        <div class="profile-header-info">
+          <h2 id="profileDisplayName">Demo User</h2>
+          <p id="profileDisplayEmail">demo@finora.app</p>
+          <div class="profile-meta">
+            <span><i class="fas fa-calendar-alt"></i> Member since <span id="memberSince">2026</span></span>
+            <span><i class="fas fa-rupee-sign"></i> Currency: <span id="profileCurrencyDisplay">INR</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="profile-stats" id="profileStatsRow"></div>
+
+      <!-- Edit Profile -->
+      <div class="profile-section-card">
+        <h3><i class="fas fa-user-edit"></i> Edit Profile</h3>
+        <div class="modal-form">
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label>Full Name</label>
+              <input type="text" class="form-input" id="editName" />
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" class="form-input" id="editEmail" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Currency Preference</label>
+            <select class="form-input" id="editCurrency">
+              <option value="INR">₹ Indian Rupee (INR)</option>
+              <option value="USD">$ US Dollar (USD)</option>
+              <option value="EUR">€ Euro (EUR)</option>
+              <option value="GBP">£ British Pound (GBP)</option>
+            </select>
+          </div>
+          <button class="btn-primary" onclick="saveProfileChanges()">
+            <i class="fas fa-save"></i> Save Changes
+          </button>
+        </div>
+      </div>
+
+      <!-- Change Password -->
+      <div class="profile-section-card">
+        <h3><i class="fas fa-lock"></i> Change Password</h3>
+        <div class="modal-form">
+          <div class="form-group">
+            <label>Current Password</label>
+            <input type="password" class="form-input" id="currentPwd" placeholder="Enter current password" />
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label>New Password</label>
+              <input type="password" class="form-input" id="newPwd" placeholder="Min 8 characters" />
+            </div>
+            <div class="form-group">
+              <label>Confirm Password</label>
+              <input type="password" class="form-input" id="confirmPwd" placeholder="Repeat new password" />
+            </div>
+          </div>
+          <div id="pwdError" style="color:var(--accent-red);font-size:0.85rem;display:none"></div>
+          <button class="btn-primary" onclick="changePassword()">
+            <i class="fas fa-shield-alt"></i> Update Password
+          </button>
+        </div>
+      </div>
+
+      <!-- Danger Zone -->
+      <div class="profile-section-card" style="border-color:rgba(239,68,68,0.2)">
+        <h3><i class="fas fa-exclamation-triangle" style="color:var(--accent-red)"></i> Danger Zone</h3>
+        <p style="color:var(--text-secondary);font-size:0.88rem;margin-bottom:1.25rem">These actions permanently affect your account data.</p>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap">
+          <button class="btn-danger" onclick="if(confirm('Clear ALL your financial data? This cannot be undone.')) { clearAllData(); }">
+            <i class="fas fa-trash-alt"></i> Clear All Data
+          </button>
+          <button class="btn-outline" style="border-color:rgba(239,68,68,0.4);color:var(--accent-red)" onclick="logoutUser()">
+            <i class="fas fa-sign-out-alt"></i> Sign Out
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast">
+    <span class="toast-icon" id="toastIcon"><i class="fas fa-check-circle"></i></span>
+    <span class="toast-message" id="toastMsg">Done</span>
+  </div>
+
+  <script src="js/theme.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/data.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const user = DB.getUser();
+      if (!user) { window.location.href = 'login.html'; return; }
+
+      // Header info
+      const avatar = (user.avatar || user.name.substring(0,2)).toUpperCase();
+      document.getElementById('profileAvatarLarge').textContent = avatar;
+      document.getElementById('profileDisplayName').textContent = user.name;
+      document.getElementById('profileDisplayEmail').textContent = user.email;
+      document.getElementById('profileCurrencyDisplay').textContent = user.currency || 'INR';
+
+      const since = user.createdAt ? new Date(user.createdAt).toLocaleDateString('en-IN',{month:'short',year:'numeric'}) : 'Jan 2026';
+      document.getElementById('memberSince').textContent = since;
+
+      // Edit fields
+      document.getElementById('editName').value = user.name;
+      document.getElementById('editEmail').value = user.email;
+      document.getElementById('editCurrency').value = user.currency || 'INR';
+
+      // Stats
+      const income = calcTotalIncome();
+      const expenses = calcTotalExpenses();
+      const savings = calcTotalSavings();
+      const invCount = getInvestments().length;
+      const stats = [
+        { val: formatCurrency(income), lbl: 'Total Income' },
+        { val: formatCurrency(expenses), lbl: 'Total Expenses' },
+        { val: formatCurrency(savings), lbl: 'Total Saved' },
+        { val: invCount, lbl: 'Investments' },
+      ];
+      document.getElementById('profileStatsRow').innerHTML = stats.map(s =>
+        `<div class="profile-stat"><div class="val">${s.val}</div><div class="lbl">${s.lbl}</div></div>`
+      ).join('');
+    });
+
+    function saveProfileChanges() {
+      const name = document.getElementById('editName').value.trim();
+      const email = document.getElementById('editEmail').value.trim();
+      const currency = document.getElementById('editCurrency').value;
+      if (!name || !email) { showToast('Name and email are required','error'); return; }
+      const user = DB.getUser();
+      const updated = { ...user, name, email, currency, avatar: name.substring(0,2).toUpperCase() };
+      localStorage.setItem('finora_current_user', JSON.stringify(updated));
+      document.getElementById('profileDisplayName').textContent = name;
+      document.getElementById('profileDisplayEmail').textContent = email;
+      document.getElementById('profileCurrencyDisplay').textContent = currency;
+      document.getElementById('profileAvatarLarge').textContent = updated.avatar;
+      showToast('Profile updated successfully','success');
+    }
+
+    function changePassword() {
+      const current = document.getElementById('currentPwd').value;
+      const newP = document.getElementById('newPwd').value;
+      const confirm = document.getElementById('confirmPwd').value;
+      const errEl = document.getElementById('pwdError');
+      errEl.style.display = 'none';
+      if (!current) { errEl.textContent = 'Enter current password'; errEl.style.display = 'block'; return; }
+      if (newP.length < 8) { errEl.textContent = 'New password must be at least 8 characters'; errEl.style.display = 'block'; return; }
+      if (newP !== confirm) { errEl.textContent = 'Passwords do not match'; errEl.style.display = 'block'; return; }
+
+      // Update in stored users list
+      const users = JSON.parse(localStorage.getItem('finora_users') || '[]');
+      const u = DB.getUser();
+      const idx = users.findIndex(x => x.id === u.id);
+      if (idx !== -1) {
+        if (users[idx].password !== current) { errEl.textContent = 'Current password is incorrect'; errEl.style.display = 'block'; return; }
+        users[idx].password = newP;
+        localStorage.setItem('finora_users', JSON.stringify(users));
+      }
+      document.getElementById('currentPwd').value = '';
+      document.getElementById('newPwd').value = '';
+      document.getElementById('confirmPwd').value = '';
+      showToast('Password updated successfully','success');
+    }
+
+    function clearAllData() {
+      const u = DB.getUser();
+      if (!u) return;
+      ['income','expenses','budgets','goals','investments','notifications'].forEach(k => {
+        localStorage.removeItem('finora_' + k + '_' + u.id);
+      });
+      showToast('All data cleared','success');
+      setTimeout(() => location.reload(), 1200);
+    }
+
+    function logoutUser() {
+      localStorage.removeItem('finora_current_user');
+      window.location.href = 'login.html';
+    }
+
+    let _toastTimer;
+    function showToast(message, type='success') {
+      const toast = document.getElementById('toast');
+      const icons = { success:'fas fa-check-circle', error:'fas fa-exclamation-circle', info:'fas fa-info-circle' };
+      toast.className = 'toast toast-' + type;
+      document.getElementById('toastIcon').innerHTML = `<i class="${icons[type]}"></i>`;
+      document.getElementById('toastMsg').textContent = message;
+      toast.classList.add('show');
+      clearTimeout(_toastTimer);
+      _toastTimer = setTimeout(() => toast.classList.remove('show'), 3000);
+    }
+  </script>
+</body>
+</html>
